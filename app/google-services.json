@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "328104863437",
+    "project_id": "habitly-b819a",
+    "storage_bucket": "habitly-b819a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328104863437:android:fa9f3cbb919c68a3dd6b84",
+        "android_client_info": {
+          "package_name": "com.example.habitly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1rXz7KAWQYLrrYB3icTteG6QTQawsQqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

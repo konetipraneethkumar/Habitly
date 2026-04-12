@@ -15,8 +15,8 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     private final List<Friend> friends;
 
     public static class Friend {
-        String name;
-        int streak;
+        public String name;
+        public int streak;
         public Friend(String name, int streak) {
             this.name = name;
             this.streak = streak;

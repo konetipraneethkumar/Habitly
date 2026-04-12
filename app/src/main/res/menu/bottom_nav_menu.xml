@@ -13,6 +13,10 @@
         android:icon="@android:drawable/ic_menu_report_image"
         android:title="@string/title_analytics" />
     <item
+        android:id="@+id/navigation_social"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Social" />
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="@string/title_profile" />
