@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_today"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/title_today" />
+    <item
+        android:id="@+id/navigation_habits"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/title_habits" />
+    <item
+        android:id="@+id/navigation_analytics"
+        android:icon="@android:drawable/ic_menu_report_image"
+        android:title="@string/title_analytics" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/title_profile" />
+</menu>

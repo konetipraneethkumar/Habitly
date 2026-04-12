@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#5C6BC0</color>
+    <color name="primary_variant">#3949AB</color>
+    <color name="secondary">#FF7043</color>
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+
+    <!-- Habit Colors -->
+    <color name="habit_red">#FF6B6B</color>
+    <color name="habit_teal">#4ECDC4</color>
+    <color name="habit_blue">#45B7D1</color>
+    <color name="habit_green">#96CEB4</color>
+    <color name="habit_yellow">#FECA57</color>
+    <color name="habit_pink">#FF9FF3</color>
+    <color name="habit_sky">#54A0FF</color>
+    <color name="habit_purple">#5F27CD</color>
+</resources>
