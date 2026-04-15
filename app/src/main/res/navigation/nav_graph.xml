@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_today"
-        android:name="com.example.habitly.TodayFragment"
+        android:name="com.example.habitly.features.today.TodayFragment"
         android:label="Today"
         tools:layout="@layout/fragment_today" />
 
     <fragment
         android:id="@+id/navigation_habits"
-        android:name="com.example.habitly.HabitsFragment"
+        android:name="com.example.habitly.features.habits.HabitsFragment"
         android:label="Habits"
         tools:layout="@layout/fragment_habits" />
 
     <fragment
         android:id="@+id/navigation_analytics"
-        android:name="com.example.habitly.AnalyticsFragment"
+        android:name="com.example.habitly.features.analytics.AnalyticsFragment"
         android:label="Analytics"
         tools:layout="@layout/fragment_analytics" />
 
     <fragment
         android:id="@+id/navigation_social"
-        android:name="com.example.habitly.SocialFragment"
+        android:name="com.example.habitly.features.social.SocialFragment"
         android:label="Social"
         tools:layout="@layout/fragment_social" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.habitly.ProfileFragment"
+        android:name="com.example.habitly.features.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

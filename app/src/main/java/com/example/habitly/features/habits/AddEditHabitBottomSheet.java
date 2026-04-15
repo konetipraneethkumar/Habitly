@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.features.habits;
 
 import android.app.TimePickerDialog;
 import android.graphics.Color;
@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.LayoutAddEditHabitBinding;
+import com.example.habitly.viewmodel.HabitViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;

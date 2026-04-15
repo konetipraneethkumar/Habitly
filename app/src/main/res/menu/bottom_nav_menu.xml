@@ -2,22 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_today"
-        android:icon="@android:drawable/ic_menu_today"
+        android:icon="@drawable/ic_today_outline"
         android:title="@string/title_today" />
     <item
         android:id="@+id/navigation_habits"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/ic_habits_outline"
         android:title="@string/title_habits" />
     <item
         android:id="@+id/navigation_analytics"
-        android:icon="@android:drawable/ic_menu_report_image"
-        android:title="@string/title_analytics" />
-    <item
-        android:id="@+id/navigation_social"
-        android:icon="@android:drawable/btn_star_big_on"
-        android:title="Social" />
+        android:icon="@drawable/ic_progress_outline"
+        android:title="@string/title_progress" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/ic_profile_outline"
         android:title="@string/title_profile" />
 </menu>

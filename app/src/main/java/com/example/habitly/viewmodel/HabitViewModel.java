@@ -1,9 +1,15 @@
-package com.example.habitly;
+package com.example.habitly.viewmodel;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.habitly.data.AppDatabase;
+import com.example.habitly.data.Habit;
+import com.example.habitly.data.HabitCompletion;
+import com.example.habitly.data.HabitRepository;
+
 import java.util.List;
 
 public class HabitViewModel extends AndroidViewModel {
@@ -42,6 +48,10 @@ public class HabitViewModel extends AndroidViewModel {
 
     public LiveData<List<HabitCompletion>> getCompletionsForHabit(int habitId) {
         return repository.getCompletionsForHabit(habitId);
+    }
+
+    public LiveData<List<HabitCompletion>> getAllCompletionsInRange(String startDate, String endDate) {
+        return repository.getAllCompletionsInRange(startDate, endDate);
     }
 
     public LiveData<List<HabitCompletion>> getCompletionsForDate(String date) {

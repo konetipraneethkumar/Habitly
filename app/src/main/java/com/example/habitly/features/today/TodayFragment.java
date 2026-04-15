@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.features.today;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.FragmentTodayBinding;
+import com.example.habitly.viewmodel.HabitViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

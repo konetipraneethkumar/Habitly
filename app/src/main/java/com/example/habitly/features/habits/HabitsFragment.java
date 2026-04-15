@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.features.habits;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.FragmentHabitsBinding;
+import com.example.habitly.viewmodel.HabitViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 public class HabitsFragment extends Fragment {
@@ -52,18 +54,18 @@ public class HabitsFragment extends Fragment {
                 deleteHabitWithUndo(habit);
             }
         });
-        binding.rvHabits.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.rvHabits.setAdapter(adapter);
+        binding.rvAllHabits.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvAllHabits.setAdapter(adapter);
     }
 
     private void observeViewModel() {
         viewModel.getAllHabits().observe(getViewLifecycleOwner(), habits -> {
             if (habits == null || habits.isEmpty()) {
-                binding.tvEmptyState.setVisibility(View.VISIBLE);
-                binding.rvHabits.setVisibility(View.GONE);
+                binding.layoutEmptyHabits.setVisibility(View.VISIBLE);
+                binding.rvAllHabits.setVisibility(View.GONE);
             } else {
-                binding.tvEmptyState.setVisibility(View.GONE);
-                binding.rvHabits.setVisibility(View.VISIBLE);
+                binding.layoutEmptyHabits.setVisibility(View.GONE);
+                binding.rvAllHabits.setVisibility(View.VISIBLE);
                 adapter.setHabits(habits);
             }
         });
@@ -82,7 +84,7 @@ public class HabitsFragment extends Fragment {
                 Habit habit = viewModel.getAllHabits().getValue().get(position);
                 deleteHabitWithUndo(habit);
             }
-        }).attachToRecyclerView(binding.rvHabits);
+        }).attachToRecyclerView(binding.rvAllHabits);
     }
 
     private void deleteHabitWithUndo(Habit habit) {

@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.features.habits;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.ItemHabitConsistencyBinding;
 
 import java.util.ArrayList;

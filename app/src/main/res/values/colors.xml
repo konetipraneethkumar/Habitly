@@ -1,20 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#5C6BC0</color>
-    <color name="primary_variant">#3949AB</color>
-    <color name="secondary">#FF7043</color>
-    <color name="background">#F5F5F5</color>
-    <color name="surface">#FFFFFF</color>
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#757575</color>
+    <color name="md_theme_light_primary">#006495</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#CBE6FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#001E30</color>
+    <color name="md_theme_light_secondary">#50606E</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#D3E5F5</color>
+    <color name="md_theme_light_onSecondaryContainer">#0C1D29</color>
+    <color name="md_theme_light_tertiary">#65587E</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#EBDDFF</color>
+    <color name="md_theme_light_onTertiaryContainer">#201637</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#FCFCFF</color>
+    <color name="md_theme_light_onBackground">#191C1E</color>
+    <color name="md_theme_light_surface">#FCFCFF</color>
+    <color name="md_theme_light_onSurface">#191C1E</color>
+    <color name="md_theme_light_surfaceVariant">#DEE3EB</color>
+    <color name="md_theme_light_onSurfaceVariant">#42474E</color>
+    <color name="md_theme_light_outline">#72777E</color>
+    <color name="md_theme_light_outlineVariant">#C2C7CF</color>
 
-    <!-- Habit Colors -->
-    <color name="habit_red">#FF6B6B</color>
-    <color name="habit_teal">#4ECDC4</color>
-    <color name="habit_blue">#45B7D1</color>
-    <color name="habit_green">#96CEB4</color>
-    <color name="habit_yellow">#FECA57</color>
-    <color name="habit_pink">#FF9FF3</color>
-    <color name="habit_sky">#54A0FF</color>
-    <color name="habit_purple">#5F27CD</color>
+    <color name="md_theme_dark_primary">#8FCDFF</color>
+    <color name="md_theme_dark_onPrimary">#003450</color>
+    <color name="md_theme_dark_primaryContainer">#004B71</color>
+    <color name="md_theme_dark_onPrimaryContainer">#CBE6FF</color>
+    <color name="md_theme_dark_secondary">#B7C9D9</color>
+    <color name="md_theme_dark_onSecondary">#22323F</color>
+    <color name="md_theme_dark_secondaryContainer">#384956</color>
+    <color name="md_theme_dark_onSecondaryContainer">#D3E5F5</color>
+    <color name="md_theme_dark_tertiary">#D0BFE7</color>
+    <color name="md_theme_dark_onTertiary">#362B4D</color>
+    <color name="md_theme_dark_tertiaryContainer">#4D4165</color>
+    <color name="md_theme_dark_onTertiaryContainer">#EBDDFF</color>
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_background">#191C1E</color>
+    <color name="md_theme_dark_onBackground">#E2E2E6</color>
+    <color name="md_theme_dark_surface">#191C1E</color>
+    <color name="md_theme_dark_onSurface">#E2E2E6</color>
+    <color name="md_theme_dark_surfaceVariant">#42474E</color>
+    <color name="md_theme_dark_onSurfaceVariant">#C2C7CF</color>
+    <color name="md_theme_dark_outline">#8C9199</color>
+    <color name="md_theme_dark_outlineVariant">#42474E</color>
+
+    <!-- HabitFlow Branding -->
+    <color name="habit_success">#4CAF50</color>
+    <color name="habit_streak">#FF9800</color>
+    <color name="habit_red">#E53935</color>
+    <color name="card_background_light">#FFFFFF</color>
+    <color name="card_background_dark">#2C2C2E</color>
+
+    <!-- Legacy Colors for Compatibility -->
+    <color name="primary">@color/md_theme_light_primary</color>
+    <color name="secondary">@color/md_theme_light_secondary</color>
+    <color name="text_secondary">@color/md_theme_light_onSurfaceVariant</color>
 </resources>

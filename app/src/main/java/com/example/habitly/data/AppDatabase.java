@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.data;
 
 import android.content.Context;
 
@@ -15,7 +15,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static AppDatabase getInstance(final Context context) {

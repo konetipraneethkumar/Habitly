@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Habitly</string>
     <string name="title_today">Today</string>
-    <string name="title_habits">Habits</string>
-    <string name="title_analytics">Analytics</string>
+    <string name="title_habits">My Habits</string>
+    <string name="title_progress">Progress</string>
     <string name="title_profile">Profile</string>
     <string name="new_habit">New Habit</string>
     <string name="save">Save</string>
@@ -10,6 +10,70 @@
     <string name="delete">Delete</string>
     <string name="habit_name_hint">Habit Name</string>
     <string name="set_reminder">Set Reminder</string>
-    <string name="default_web_client_id" translatable="false">AIzaSyC1rXz7KAWQYLrrYB3icTteG6QTQawsQqY
-</string>
+    <string name="title_analytics">Analytics</string>
+
+    <string name="empty_today_title">🎯 No habits for today</string>
+    <string name="empty_today_subtitle">Tap + to start building a routine.</string>
+    <string name="empty_habits_title">No habits created yet</string>
+
+    <string name="menu_edit_display_name">Edit Display Name</string>
+    <string name="menu_theme">Theme</string>
+    <string name="menu_reminders">Reminder Settings</string>
+    <string name="menu_export">Export Data (CSV)</string>
+    <string name="menu_reset">Reset All Progress</string>
+    <string name="menu_about">About Habitly</string>
+    <string name="menu_feedback">Send Feedback</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_account_settings">Account Settings</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="account_security">Security</string>
+    <string name="privacy_settings">Privacy</string>
+
+    <!-- Login/Auth Strings -->
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Sign in to sync your habits across devices</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="signup_button">Create Account</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="google_sign_in">Continue with Google</string>
+    <string name="no_account">Don\'t have an account? Sign Up</string>
+    <string name="has_account">Already have an account? Login</string>
+
+    <string name="about_title">About %1$s</string>
+    <string name="about_message">%1$s v%2$s\n\nA simple, powerful habit tracker built with Material 3.\n\nCreated with ❤️ for better routines.</string>
+
+    <string name="default_web_client_id" translatable="false">AIzaSyC1rXz7KAWQYLrrYB3icTteG6QTQawsQqY</string>
+    <string name="login_to_backup">Please login to backup data</string>
+    <string name="login_to_restore">Please login to restore data</string>
+    <string name="sync_success">Data synced to cloud successfully!</string>
+    <string name="no_backup_found">No backup found for this account</string>
+    <string name="restore_title">Restore Data?</string>
+    <string name="restore_message">This will overwrite your current local habits. Continue?</string>
+    <string name="restore_button">Restore</string>
+    <string name="restore_complete">Restoration complete!</string>
+    <string name="account_updated">Account updated</string>
+    <string name="password_reset_sent">Password reset link sent to email</string>
+    <string name="delete_account_confirm">Delete Account?</string>
+    <string name="delete_account_message">This will permanently delete all your data.</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="logged_out">Logged out</string>
+    <string name="auto_timely_style">Auto Timely Style</string>
+    <string name="reset_data_title">Reset All Data</string>
+    <string name="reset_data_message">Are you sure you want to delete all habits and progress? This cannot be undone.</string>
+    <string name="all_progress_reset">All progress reset</string>
+    <string name="member_since">Member since %1$s</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_disabled">Notifications disabled</string>
+    <string name="cloud_sync">Cloud Sync</string>
+    <string name="backup_data">Backup Data to Cloud</string>
+    <string name="restore_data">Restore from Cloud</string>
+    <string name="stat_habits">Habits</string>
+    <string name="stat_current">Current</string>
+    <string name="stat_best">Best</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="back">Back</string>
 </resources>

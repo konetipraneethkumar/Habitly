@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.data;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;

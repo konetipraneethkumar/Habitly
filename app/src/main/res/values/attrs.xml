@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="onSurfaceVariant" format="color|reference" />
+    <attr name="surfaceVariant" format="color|reference" />
+    <attr name="onPrimaryContainer" format="color|reference" />
+    <attr name="outlineVariant" format="color|reference" />
+    <attr name="colorOutlineVariant" format="color|reference" />
+
+    <!-- Dynamic Theme Attributes -->
+    <attr name="dynamicBackgroundColor" format="color|reference" />
+    <attr name="dynamicSurfaceColor" format="color|reference" />
+    <attr name="dynamicTextColorPrimary" format="color|reference" />
+    <attr name="dynamicTextColorSecondary" format="color|reference" />
+    <attr name="dynamicCardBackgroundColor" format="color|reference" />
+    <attr name="dynamicIconTint" format="color|reference" />
+    <attr name="dynamicOverlayColor" format="color|reference" />
+
+    <!-- User Custom Text Colors -->
+    <attr name="customTextColorPrimary" format="color|reference" />
+    <attr name="customTextColorSecondary" format="color|reference" />
+</resources>

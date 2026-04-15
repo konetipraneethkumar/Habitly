@@ -1,51 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:cardBackgroundColor="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.HabitFlow.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp">
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="?attr/dynamicCardBackgroundColor"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <View
             android:id="@+id/view_color_bar"
             android:layout_width="4dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="12dp"
-            android:background="@color/primary" />
+            android:layout_height="0dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_habit_emoji"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
             android:background="@drawable/circle_background"
             android:gravity="center"
-            android:text="📚"
-            android:textSize="20sp" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_color_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="💊" />
 
         <TextView
             android:id="@+id/tv_habit_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
-            android:text="Read a book"
-            android:textSize="18sp" />
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="?attr/dynamicTextColorPrimary"
+            app:layout_constraintEnd_toStartOf="@id/cb_habit_done"
+            app:layout_constraintStart_toEndOf="@id/tv_habit_emoji"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Drink Water" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/tv_habit_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_habit_name">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_fire"
+                app:tint="@color/habit_streak" />
+
+            <TextView
+                android:id="@+id/tv_streak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="?attr/dynamicTextColorSecondary"
+                tools:text="5 day streak" />
+        </LinearLayout>
+
+        <CheckBox
             android:id="@+id/cb_habit_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:buttonTint="@color/habit_green" />
+            android:buttonTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.notifications;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.features.analytics;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,7 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.FragmentAnalyticsBinding;
+import com.example.habitly.features.habits.HabitConsistencyAdapter;
+import com.example.habitly.viewmodel.HabitViewModel;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -73,37 +76,55 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void setupBarChart() {
-        List<BarEntry> entries = new ArrayList<>();
-        String[] labels = new String[7];
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -6);
+        String startDate = sdf.format(cal.getTime());
+        String endDate = sdf.format(Calendar.getInstance().getTime());
 
-        for (int i = 0; i < 7; i++) {
-            labels[i] = new SimpleDateFormat("EEE", Locale.getDefault()).format(cal.getTime());
-            // Mock data for now as calculating this from Room requires complex queries
-            entries.add(new BarEntry(i, (float) (Math.random() * 5)));
-            cal.add(Calendar.DATE, 1);
-        }
+        viewModel.getAllCompletionsInRange(startDate, endDate).observe(getViewLifecycleOwner(), completions -> {
+            if (completions == null) return;
 
-        BarDataSet dataSet = new BarDataSet(entries, "Completions");
-        dataSet.setColor(Color.parseColor("#5C6BC0"));
-        dataSet.setDrawValues(false);
+            List<BarEntry> entries = new ArrayList<>();
+            String[] labels = new String[7];
+            Calendar innerCal = Calendar.getInstance();
+            innerCal.add(Calendar.DATE, -6);
 
-        BarData barData = new BarData(dataSet);
-        barData.setBarWidth(0.6f);
+            for (int i = 0; i < 7; i++) {
+                String dateStr = sdf.format(innerCal.getTime());
+                labels[i] = new SimpleDateFormat("EEE", Locale.getDefault()).format(innerCal.getTime());
+                
+                int count = 0;
+                for (com.example.habitly.data.HabitCompletion c : completions) {
+                    if (c.getCompletedDate().equals(dateStr)) {
+                        count++;
+                    }
+                }
+                
+                entries.add(new BarEntry(i, (float) count));
+                innerCal.add(Calendar.DATE, 1);
+            }
 
-        binding.barChart.setData(barData);
+            BarDataSet dataSet = new BarDataSet(entries, "Completions");
+            dataSet.setColor(Color.parseColor("#5C6BC0"));
+            dataSet.setDrawValues(false);
+
+            BarData barData = new BarData(dataSet);
+            barData.setBarWidth(0.6f);
+
+            binding.barChart.setData(barData);
+            binding.barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
+            binding.barChart.invalidate();
+        });
+
         binding.barChart.getDescription().setEnabled(false);
         binding.barChart.getLegend().setEnabled(false);
         binding.barChart.setDrawGridBackground(false);
         binding.barChart.getAxisRight().setEnabled(false);
 
         XAxis xAxis = binding.barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
-
-        binding.barChart.invalidate();
     }
 }

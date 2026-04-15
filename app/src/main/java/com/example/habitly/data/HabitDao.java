@@ -1,4 +1,4 @@
-package com.example.habitly;
+package com.example.habitly.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -22,6 +22,9 @@ public interface HabitDao {
 
     @Query("SELECT * FROM habits WHERE isActive = 1 ORDER BY name ASC")
     LiveData<List<Habit>> getAllActiveHabits();
+
+    @Query("SELECT * FROM habits WHERE isActive = 1 ORDER BY name ASC")
+    List<Habit> getAllActiveHabitsSync();
 
     @Query("SELECT * FROM habits WHERE id = :id")
     Habit getHabitByIdSync(int id);
@@ -52,6 +55,12 @@ public interface HabitDao {
 
     @Query("SELECT COUNT(*) FROM habit_completions WHERE habitId = :habitId")
     int getTotalCompletionsForHabitSync(int habitId);
+
+    @Query("SELECT COUNT(*) FROM habit_completions WHERE completedDate = :date")
+    LiveData<Integer> getCompletionCountForDate(String date);
+
+    @Query("SELECT * FROM habit_completions WHERE completedDate BETWEEN :startDate AND :endDate")
+    LiveData<List<HabitCompletion>> getAllCompletionsInRange(String startDate, String endDate);
 
     @Delete
     void deleteCompletion(HabitCompletion completion);

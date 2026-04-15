@@ -1,7 +1,11 @@
-package com.example.habitly;
+package com.example.habitly.data;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
+
+import com.example.habitly.notifications.NotificationHelper;
+
+import com.example.habitly.utils.CloudSyncManager;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -19,7 +23,7 @@ public class HabitRepository {
         AppDatabase db = AppDatabase.getInstance(application);
         habitDao = db.habitDao();
         allActiveHabits = habitDao.getAllActiveHabits();
-        executorService = Executors.newSingleThreadExecutor();
+        executorService = AppDatabase.databaseWriteExecutor;
         applicationContext = application.getApplicationContext();
     }
 
@@ -95,6 +99,10 @@ public class HabitRepository {
         return habitDao.getCompletionsForHabit(habitId);
     }
 
+    public LiveData<List<HabitCompletion>> getAllCompletionsInRange(String startDate, String endDate) {
+        return habitDao.getAllCompletionsInRange(startDate, endDate);
+    }
+
     private void updateStreakSync(int habitId) {
         Habit habit = habitDao.getHabitByIdSync(habitId);
         if (habit == null) return;
@@ -145,5 +153,17 @@ public class HabitRepository {
         
         habit.setTotalCompletions(completions.size());
         habitDao.updateHabit(habit);
+        
+        // Sync to Cloud
+        android.content.SharedPreferences prefs = applicationContext.getSharedPreferences("HabitlyPrefs", android.content.Context.MODE_PRIVATE);
+        String name = prefs.getString("user_name", "User");
+        
+        // Recalculate total EXP for all habits
+        List<Habit> allHabits = habitDao.getAllActiveHabitsSync();
+        int totalExp = 0;
+        for (Habit h : allHabits) {
+            totalExp += h.getTotalCompletions() * 10;
+        }
+        CloudSyncManager.syncUserExp(applicationContext, name, totalExp);
     }
 }
