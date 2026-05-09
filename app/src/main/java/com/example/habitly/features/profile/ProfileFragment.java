@@ -2,8 +2,6 @@ package com.example.habitly.features.profile;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -159,14 +157,16 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showAccountSettingsDialog() {
-        View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_account_settings, null);
+        Context context = getContext();
+        if (context == null) return;
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_account_settings, null);
         EditText etName = view.findViewById(R.id.et_account_name);
         EditText etEmail = view.findViewById(R.id.et_account_email);
         
         etName.setText(prefs.getString("user_name", "User"));
         etEmail.setText(prefs.getString("user_email", "user@example.com"));
 
-        new AlertDialog.Builder(requireContext())
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.menu_account_settings)
                 .setView(view)
                 .setPositiveButton(R.string.save, (dialog, which) -> {
@@ -184,13 +184,13 @@ public class ProfileFragment extends Fragment {
 
         view.findViewById(R.id.btn_change_password).setOnClickListener(v -> Toast.makeText(getContext(), R.string.password_reset_sent, Toast.LENGTH_SHORT).show());
 
-        view.findViewById(R.id.btn_delete_account).setOnClickListener(v -> new AlertDialog.Builder(requireContext())
+        view.findViewById(R.id.btn_delete_account).setOnClickListener(v -> new AlertDialog.Builder(context)
                 .setTitle(R.string.delete_account_confirm)
                 .setMessage(R.string.delete_account_message)
                 .setPositiveButton(R.string.delete, (d, w) -> {
                     prefs.edit().clear().apply();
                     AppDatabase.databaseWriteExecutor.execute(() -> {
-                        AppDatabase.getInstance(requireContext()).clearAllTables();
+                        AppDatabase.getInstance(context).clearAllTables();
                         if (getActivity() != null) getActivity().runOnUiThread(() -> getActivity().finish());
                     });
                 })
@@ -199,7 +199,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showLogoutDialog() {
-        new AlertDialog.Builder(requireContext())
+        Context context = getContext();
+        if (context == null) return;
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.menu_logout)
                 .setMessage(R.string.logout_confirm)
                 .setPositiveButton(R.string.menu_logout, (dialog, which) -> {
@@ -213,10 +215,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showThemeDialog() {
+        Context context = getContext();
+        if (context == null) return;
+
         String[] themes = {"Light", "Dark", "System Default", "Auto Timely"};
         int checkedItem = prefs.getInt("theme_mode_index", 2);
 
-        new AlertDialog.Builder(requireContext())
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.menu_theme)
                 .setSingleChoiceItems(themes, checkedItem, (dialog, which) -> {
                     if (which == 3) {
@@ -230,29 +235,29 @@ public class ProfileFragment extends Fragment {
                             default: mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM; break;
                         }
                         
-                        // Apply mode first
-                        AppCompatDelegate.setDefaultNightMode(mode);
-                        
-                        // Then save and recreate
+                        // Save first
                         prefs.edit()
                                 .putInt("theme_mode", mode)
                                 .putInt("theme_mode_index", which)
                                 .apply();
                         
+                        // Apply mode
+                        AppCompatDelegate.setDefaultNightMode(mode);
+                        
                         dialog.dismiss();
-                        if (getActivity() != null) {
-                            getActivity().recreate();
-                        }
                     }
                 })
                 .show();
     }
 
     private void showAutoTimelySubOptions() {
+        Context context = getContext();
+        if (context == null) return;
+
         String[] options = {"Dynamic (Light day / Dark night)", "Always Light", "Always Dark"};
         int checkedSub = prefs.getInt("auto_timely_sub_mode", 0);
 
-        new AlertDialog.Builder(requireContext())
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.auto_timely_style)
                 .setSingleChoiceItems(options, checkedSub, (dialog, which) -> {
                     prefs.edit()
@@ -308,7 +313,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showAboutDialog() {
-        new AlertDialog.Builder(requireContext())
+        Context context = getContext();
+        if (context == null) return;
+        new AlertDialog.Builder(context)
                 .setTitle(getString(R.string.about_title, "Habitly"))
                 .setMessage(getString(R.string.about_message, "Habitly", "1.0"))
                 .setPositiveButton(android.R.string.ok, null)
@@ -343,11 +350,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showResetDialog() {
-        new AlertDialog.Builder(requireContext())
+        Context context = getContext();
+        if (context == null) return;
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.reset_data_title)
                 .setMessage(R.string.reset_data_message)
                 .setPositiveButton(R.string.menu_reset, (dialog, which) -> AppDatabase.databaseWriteExecutor.execute(() -> {
-                    AppDatabase.getInstance(requireContext()).clearAllTables();
+                    AppDatabase.getInstance(context).clearAllTables();
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.all_progress_reset, Toast.LENGTH_SHORT).show());
                     }

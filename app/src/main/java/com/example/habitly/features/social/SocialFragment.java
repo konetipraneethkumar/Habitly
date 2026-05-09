@@ -58,7 +58,10 @@ public class SocialFragment extends Fragment {
 
     private void setupLoginButtons() {
         binding.btnGoogleLogin.setOnClickListener(v -> {
-            prefs.edit().putBoolean("is_logged_in", true).apply();
+            prefs.edit()
+                .putBoolean("is_logged_in", true)
+                .putString("user_name", "Social User")
+                .apply();
             checkLoginStatus();
         });
     }

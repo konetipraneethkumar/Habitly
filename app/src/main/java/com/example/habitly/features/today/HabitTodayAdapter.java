@@ -77,11 +77,19 @@ public class HabitTodayAdapter extends RecyclerView.Adapter<HabitTodayAdapter.Ha
 
             if (isCompleted) {
                 binding.tvHabitName.setPaintFlags(binding.tvHabitName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                binding.tvHabitName.setTextColor(Color.GRAY);
-                binding.getRoot().setAlpha(0.6f);
+                binding.tvHabitName.setTextColor(Color.parseColor("#9E9E9E")); // Light Gray
+                binding.tvStreak.setTextColor(Color.parseColor("#BDBDBD"));
+                binding.ivStreakIcon.setImageAlpha(128); // Semi-transparent
+                binding.tvHabitEmoji.setAlpha(0.5f);
+                binding.cbHabitDone.setAlpha(0.6f);
+                binding.getRoot().setAlpha(0.85f);
             } else {
                 binding.tvHabitName.setPaintFlags(binding.tvHabitName.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-                binding.tvHabitName.setTextColor(Color.BLACK);
+                binding.tvHabitName.setTextColor(Color.parseColor("#1A1A1A")); // Dark
+                binding.tvStreak.setTextColor(Color.parseColor("#424242"));
+                binding.ivStreakIcon.setImageAlpha(255);
+                binding.tvHabitEmoji.setAlpha(1.0f);
+                binding.cbHabitDone.setAlpha(1.0f);
                 binding.getRoot().setAlpha(1.0f);
             }
 

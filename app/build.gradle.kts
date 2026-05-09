@@ -54,6 +54,10 @@ dependencies {
     // MPAndroidChart
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     
+    // Glide for optimized image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
     // UI
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")

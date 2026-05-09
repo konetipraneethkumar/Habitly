@@ -34,7 +34,7 @@
         <item name="dynamicSurfaceColor">@color/md_theme_dark_surface</item>
         <item name="dynamicTextColorPrimary">#FFFFFF</item>
         <item name="dynamicTextColorSecondary">#F0F0F0</item>
-        <item name="dynamicCardBackgroundColor">#EE1E1E1E</item>
+        <item name="dynamicCardBackgroundColor">@color/glass_white</item>
         <item name="dynamicIconTint">#FFFFFF</item>
         <item name="dynamicOverlayColor">#80000000</item> <!-- 50% Dark Overlay -->
     </style>

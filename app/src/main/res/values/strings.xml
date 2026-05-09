@@ -12,6 +12,17 @@
     <string name="set_reminder">Set Reminder</string>
     <string name="title_analytics">Analytics</string>
 
+    <string name="today_progress">Today\'s Progress</string>
+    <string name="greeting_format">%1$s, %2$s! 👋</string>
+    <string name="social_join_title">Join Community 🤝</string>
+    <string name="social_join_subtitle">Connect with friends to compare streaks and stay motivated together!</string>
+    <string name="social_dashboard">Social Dashboard</string>
+    <string name="your_friend_code">Your Friend Code</string>
+    <string name="default_friend_code">ABC123</string>
+    <string name="friend_code_hint">Enter Friend Code</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="friend_leaderboard">Friend Leaderboard</string>
+
     <string name="empty_today_title">🎯 No habits for today</string>
     <string name="empty_today_subtitle">Tap + to start building a routine.</string>
     <string name="empty_habits_title">No habits created yet</string>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ public class AddEditHabitBottomSheet extends BottomSheetDialogFragment {
     private HabitViewModel viewModel;
     private int habitId = -1;
     private String selectedEmoji = "📚";
-    private String selectedColor = "#5C6BC0";
+    private String selectedColor = "#FF6B6B";
     private String selectedTime = null;
 
     private final String[] emojis = {"📚", "🏃", "💧", "🧘", "🎨", "💪", "🍎", "😴", "📝", "🎵", "🌿", "🧠", "💻", "🚴", "🏋️", "🛡️", "✍️", "🎯", "🌅", "🤝"};
@@ -69,11 +70,12 @@ public class AddEditHabitBottomSheet extends BottomSheetDialogFragment {
 
     private void setupEmojiPicker() {
         for (String emoji : emojis) {
-            Chip chip = new Chip(getContext());
+            Chip chip = new Chip(requireContext());
             chip.setText(emoji);
             chip.setCheckable(true);
             chip.setClickable(true);
-            chip.setPadding(8, 8, 8, 8);
+            chip.setTextSize(24);
+            
             chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) selectedEmoji = emoji;
             });
@@ -83,30 +85,29 @@ public class AddEditHabitBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void setupColorPicker() {
+        binding.llColors.removeAllViews();
+        float density = getResources().getDisplayMetrics().density;
         for (String color : colors) {
-            MaterialCardView card = new MaterialCardView(getContext());
-            int size = (int) (40 * getResources().getDisplayMetrics().density);
-            int margin = (int) (8 * getResources().getDisplayMetrics().density);
-            ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(size, size);
+            MaterialCardView card = new MaterialCardView(requireContext());
+            int size = (int) (44 * density);
+            int margin = (int) (6 * density);
+            
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
             lp.setMargins(margin, margin, margin, margin);
             card.setLayoutParams(lp);
             card.setRadius(size / 2f);
             card.setCardBackgroundColor(Color.parseColor(color));
-            card.setStrokeWidth(selectedColor.equals(color) ? 6 : 0);
-            card.setStrokeColor(Color.BLACK);
+            
+            boolean isSelected = selectedColor.equalsIgnoreCase(color);
+            card.setStrokeWidth(isSelected ? (int) (3 * density) : 0);
+            card.setStrokeColor(Color.WHITE);
+            card.setCardElevation(isSelected ? 4 * density : 0);
+
             card.setOnClickListener(v -> {
                 selectedColor = color;
-                refreshColorPicker();
+                setupColorPicker();
             });
             binding.llColors.addView(card);
-        }
-    }
-
-    private void refreshColorPicker() {
-        for (int i = 0; i < binding.llColors.getChildCount(); i++) {
-            MaterialCardView card = (MaterialCardView) binding.llColors.getChildAt(i);
-            String color = colors[i];
-            card.setStrokeWidth(selectedColor.equals(color) ? 6 : 0);
         }
     }
 
@@ -178,13 +179,12 @@ public class AddEditHabitBottomSheet extends BottomSheetDialogFragment {
                 selectedColor = habit.getColorHex();
                 selectedTime = habit.getReminderTime();
 
-                // Select Emoji
                 for (int i = 0; i < binding.cgEmojis.getChildCount(); i++) {
                     Chip chip = (Chip) binding.cgEmojis.getChildAt(i);
                     if (chip.getText().toString().equals(selectedEmoji)) chip.setChecked(true);
                 }
 
-                refreshColorPicker();
+                setupColorPicker();
 
                 if (selectedTime != null) {
                     binding.switchReminder.setChecked(true);

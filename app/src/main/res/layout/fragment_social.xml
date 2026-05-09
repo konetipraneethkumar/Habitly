@@ -19,17 +19,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Join Community 🤝"
+            android:text="@string/social_join_title"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="?attr/dynamicTextColorPrimary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="Connect with friends to compare streaks and stay motivated together!"
-            android:textSize="16sp" />
+            android:text="@string/social_join_subtitle"
+            android:textSize="16sp"
+            android:textColor="?attr/dynamicTextColorSecondary" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_google_login"
@@ -49,9 +51,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Social Dashboard"
+            android:text="@string/social_dashboard"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="?attr/dynamicTextColorPrimary" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -69,7 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your Friend Code"
+                    android:text="@string/your_friend_code"
                     android:textSize="12sp"
                     android:textAllCaps="true" />
 
@@ -77,7 +80,7 @@
                     android:id="@+id/tv_friend_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ABC123"
+                    android:text="@string/default_friend_code"
                     android:textColor="?attr/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -88,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Enter Friend Code"
+            android:hint="@string/friend_code_hint"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -102,14 +105,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Add Friend" />
+            android:text="@string/add_friend" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Friend Leaderboard"
-            android:textStyle="bold" />
+            android:text="@string/friend_leaderboard"
+            android:textStyle="bold"
+            android:textColor="?attr/dynamicTextColorPrimary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_social_leaderboard"

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.habitly.R;
 import com.example.habitly.data.Habit;
 import com.example.habitly.databinding.FragmentTodayBinding;
 import com.example.habitly.viewmodel.HabitViewModel;
@@ -68,7 +69,7 @@ public class TodayFragment extends Fragment {
         else greeting = "Good Evening";
 
         String userName = requireContext().getSharedPreferences("HabitlyPrefs", 0).getString("user_name", "User");
-        binding.tvGreeting.setText(greeting + ", " + userName + "! 👋");
+        binding.tvGreeting.setText(getString(R.string.greeting_format, greeting, userName));
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE, d MMMM", Locale.getDefault());
         binding.tvDate.setText(sdf.format(new Date()));

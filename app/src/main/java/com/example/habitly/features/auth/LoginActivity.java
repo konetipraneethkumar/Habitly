@@ -14,6 +14,7 @@ import com.example.habitly.databinding.ActivityLoginBinding;
 import com.example.habitly.features.main.MainActivity;
 import com.example.habitly.utils.CloudSyncManager;
 import com.example.habitly.utils.ThemeManager;
+import com.bumptech.glide.Glide;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,10 +23,13 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply theme before super.onCreate
+        SharedPreferences prefs = getSharedPreferences("HabitlyPrefs", MODE_PRIVATE);
+        int themeModeIndex = prefs.getInt("theme_mode_index", ThemeManager.THEME_SYSTEM);
         ThemeManager.applyTheme(this);
+        
         super.onCreate(savedInstanceState);
         
-        SharedPreferences prefs = getSharedPreferences("HabitlyPrefs", MODE_PRIVATE);
         if (prefs.getBoolean("is_logged_in", false)) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
@@ -35,7 +39,29 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        updateTimelyBackground(themeModeIndex);
         setupListeners();
+    }
+
+    private void updateTimelyBackground(int themeModeIndex) {
+        if (themeModeIndex == ThemeManager.THEME_AUTO_TIMELY) {
+            binding.ivLoginBg.setVisibility(View.VISIBLE);
+            binding.vLoginOverlay.setVisibility(View.VISIBLE);
+            
+            Glide.with(this)
+                    .load(ThemeManager.getTimelyBackgroundRes())
+                    .centerCrop()
+                    .into(binding.ivLoginBg);
+            
+            ThemeManager.TimePeriod period = ThemeManager.getCurrentTimePeriod();
+            float alpha = (period == ThemeManager.TimePeriod.MORNING || period == ThemeManager.TimePeriod.AFTERNOON) ? 0.60f : 0.80f;
+            binding.vLoginOverlay.setAlpha(alpha);
+        } else {
+            // For other themes, use a solid color or a default image
+            binding.ivLoginBg.setVisibility(View.GONE);
+            binding.vLoginOverlay.setVisibility(View.GONE);
+            binding.getRoot().setBackgroundResource(R.color.md_theme_light_primary); // Default fallback
+        }
     }
 
     private void setupListeners() {
@@ -58,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             binding.btnPrimaryAuth.setText(R.string.login_button);
             binding.tvSwitchAuth.setText(R.string.no_account);
         } else {
-            binding.tvAuthTitle.setText("Create Account");
+            binding.tvAuthTitle.setText(R.string.signup_button);
             binding.btnPrimaryAuth.setText(R.string.signup_button);
             binding.tvSwitchAuth.setText(R.string.has_account);
         }

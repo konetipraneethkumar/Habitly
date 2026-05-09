@@ -21,6 +21,7 @@ import com.example.habitly.databinding.ActivityMainBinding;
 import com.example.habitly.features.habits.AddEditHabitBottomSheet;
 import com.example.habitly.notifications.NotificationHelper;
 import com.example.habitly.utils.ThemeManager;
+import com.bumptech.glide.Glide;
 
 /**
  * Main Activity for Habitly App.
@@ -73,8 +74,12 @@ public class MainActivity extends AppCompatActivity {
         if (themeModeIndex == ThemeManager.THEME_AUTO_TIMELY) {
             binding.ivTimelyBackground.setVisibility(View.VISIBLE);
             binding.vThemeOverlay.setVisibility(View.VISIBLE);
-            binding.ivTimelyBackground.setImageResource(ThemeManager.getTimelyBackgroundRes());
-            binding.ivTimelyBackground.setScaleType(android.widget.ImageView.ScaleType.CENTER_CROP);
+            
+            // Use Glide to load background image efficiently
+            Glide.with(this)
+                    .load(ThemeManager.getTimelyBackgroundRes())
+                    .centerCrop()
+                    .into(binding.ivTimelyBackground);
             
             // Adjust overlay alpha based on time for readability
             ThemeManager.TimePeriod period = ThemeManager.getCurrentTimePeriod();

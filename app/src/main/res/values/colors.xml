@@ -50,6 +50,12 @@
     <color name="md_theme_dark_outline">#8C9199</color>
     <color name="md_theme_dark_outlineVariant">#42474E</color>
 
+    <!-- Glassmorphism Colors -->
+    <color name="glass_white">#A6FFFFFF</color>
+    <color name="glass_white_stroke">#CCFFFFFF</color>
+    <color name="glass_black">#66000000</color>
+    <color name="glass_black_stroke">#99000000</color>
+
     <!-- HabitFlow Branding -->
     <color name="habit_success">#4CAF50</color>
     <color name="habit_streak">#FF9800</color>
