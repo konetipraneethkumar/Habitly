@@ -24,12 +24,6 @@
         tools:layout="@layout/fragment_analytics" />
 
     <fragment
-        android:id="@+id/navigation_social"
-        android:name="com.example.habitly.features.social.SocialFragment"
-        android:label="Social"
-        tools:layout="@layout/fragment_social" />
-
-    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.habitly.features.profile.ProfileFragment"
         android:label="Profile"

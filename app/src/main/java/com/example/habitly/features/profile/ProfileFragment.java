@@ -26,7 +26,6 @@ import com.example.habitly.data.AppDatabase;
 import com.example.habitly.data.Habit;
 import com.example.habitly.data.HabitCompletion;
 import com.example.habitly.databinding.FragmentProfileBinding;
-import com.example.habitly.features.social.LeaderboardAdapter;
 import com.example.habitly.utils.CloudSyncManager;
 import com.example.habitly.utils.ThemeManager;
 import com.example.habitly.viewmodel.HabitViewModel;
@@ -60,7 +59,6 @@ public class ProfileFragment extends Fragment {
 
         setupToolbar();
         setupProfile();
-        setupLeaderboard();
         setupCloudSync();
         observeStats();
     }
@@ -382,37 +380,6 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), R.string.notifications_disabled, Toast.LENGTH_SHORT).show();
                 // Logic to cancel all reminders could go here
             }
-        });
-    }
-
-    private void setupLeaderboard() {
-        List<LeaderboardAdapter.Friend> friends = new ArrayList<>();
-        friends.add(new LeaderboardAdapter.Friend("You", 0));
-        friends.add(new LeaderboardAdapter.Friend("ZenMaster", 2450));
-        friends.add(new LeaderboardAdapter.Friend("ConsistencyKing", 1980));
-        friends.add(new LeaderboardAdapter.Friend("HabitHero", 1520));
-        friends.add(new LeaderboardAdapter.Friend("EarlyBird", 890));
-        friends.add(new LeaderboardAdapter.Friend("SteadyStepper", 450));
-
-        binding.rvLeaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
-        
-        viewModel.getAllHabits().observe(getViewLifecycleOwner(), habits -> {
-            int totalExp = 0;
-            if (habits != null) {
-                for (Habit h : habits) {
-                    totalExp += h.getTotalCompletions() * 10;
-                }
-            }
-            
-            for (LeaderboardAdapter.Friend f : friends) {
-                if (f.name.equals(prefs.getString("user_name", "You")) || f.name.equals("You")) {
-                    f.name = prefs.getString("user_name", "You");
-                    f.exp = totalExp;
-                }
-            }
-            
-            friends.sort((f1, f2) -> Integer.compare(f2.exp, f1.exp));
-            binding.rvLeaderboard.setAdapter(new LeaderboardAdapter(friends, prefs.getString("user_name", "You")));
         });
     }
 

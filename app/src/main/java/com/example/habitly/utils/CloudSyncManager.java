@@ -2,10 +2,6 @@ package com.example.habitly.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.example.habitly.features.social.LeaderboardAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Simulates a Cloud Backend (Firebase/Firestore) using SharedPreferences.
@@ -53,19 +49,6 @@ public class CloudSyncManager {
     public static String restoreDataFromCloud(Context context, String email) {
         SharedPreferences cloud = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return cloud.getString("backup_" + email, null);
-    }
-
-    public static List<LeaderboardAdapter.Friend> getGlobalLeaderboard(Context context) {
-        SharedPreferences cloud = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        Map<String, ?> allEntries = cloud.getAll();
-        List<LeaderboardAdapter.Friend> leaderboard = new ArrayList<>();
-        
-        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            if (entry.getValue() instanceof Integer) {
-                leaderboard.add(new LeaderboardAdapter.Friend(entry.getKey(), (Integer) entry.getValue()));
-            }
-        }
-        return leaderboard;
     }
 
     public static String[] authenticate(String email, String password) {
